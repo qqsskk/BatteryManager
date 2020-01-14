@@ -49,18 +49,9 @@ void MainWindow::initWindow()
     ui->tabWidget->addTab(batteryBoxForm, QString::fromLocal8Bit("电池盒  "));
     ui->tabWidget->setCurrentIndex(0);
 
-
-    QSqlDatabase db = QSqlDatabase::addDatabase("QODBC3");
-    db.setDatabaseName(QString("DRIVER={SQL SERVER};"
-                               "SERVER=%1;"
-                               "DATABASE=%2;"
-                               "UID=%3;"
-                               "PWD=%4;").arg("192.168.1.179").arg("BatteryDB").arg("sa").arg("admin"));
-
     if(!linkdb())
     {
-        QSqlError err = db.lastError();
-        qDebug()<<"db open fail:"<<err.text();;
+        qDebug()<<"db open fail！";
     }
 }
 
